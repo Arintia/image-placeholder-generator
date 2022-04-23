@@ -7,9 +7,9 @@ This project is a web application that allows you to generate a custom placehold
 1. Theme switcher
 ![Theme Switcher](./assets/themeswitcher.gif)
 2. Interactive Canvas Re-painting
-![Interactive Canvas](./assets/interactivecanvas.png)
+![Interactive Canvas](./assets/interactivecanvas.gif)
 3. Active font size
-![Active Font Size](./assets/activefontsize.png)
+![Active Font Size](./assets/activefontsize.gif)
  
 ### Built with
 This project uses multiple libraries and frameworks.
