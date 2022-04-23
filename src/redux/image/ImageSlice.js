@@ -68,7 +68,7 @@ export const ImageSlice = createSlice({
     },
     reducers: {
         setFontSize: (state, action) => {
-            state.fontSize = action.payload;
+            state.canvasFontSize = action.payload;
         },
         setFontStyle: (state, action) => {
             state.canvasFontStyle = action.payload;

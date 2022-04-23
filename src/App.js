@@ -23,6 +23,7 @@ function App() {
   const [canvasFontWeight, setCanvasFontWeight] = useState(400);
   const [canvasTextColor, setCanvasTextColor] = useState("#ffffff");
   const [canvasBackgroundColor, setCanvasBackgroundColor] = useState("#cccccc");
+
   useEffect(() => {
     html.current = document.querySelector("html");
     lightModeSun.current = document.getElementById("sun");
@@ -50,7 +51,7 @@ function App() {
     canvas.current.fillRect(0, 0, canvasWidth, canvasHeight);
     canvas.current.font = `${canvasFontWeight} ${canvasFontSize} ${canvasFontStyle}`;
     canvas.current.fillStyle = canvasTextColor;
-    canvas.current.fillText(canvasCaption, (canvasWidth / 2) - (canvasCaption.length), canvasHeight / 2);
+    canvas.current.fillText(canvasCaption, (canvasWidth / 2) - (canvas.current.measureText(canvasCaption).width /2), canvasHeight / 2);
   }, [canvasBackgroundColor, canvasCaption, canvasFontSize, canvasFontStyle, canvasFontWeight, canvasHeight, canvasTextColor, canvasWidth]);
 
   const handleThemeSwitch = () => {
