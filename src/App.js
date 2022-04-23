@@ -1,4 +1,5 @@
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -118,10 +119,10 @@ function App() {
    * Converts the HTMl5 Canvas to a downloadable PNG file and starts the download.
    * @param {*} e - Event object 
    */
-  const convertCanvasToPng = (e) => {
+  const convertCanvasToImage = (e) => {
     const canvas = document.getElementById("image-canvas");
-    const image = canvas.toDataURL("image/png");
-    const downloadBtn = document.getElementById("download-canvas");
+    const image = canvas.toDataURL(`image/${e.target.id}`);
+    const downloadBtn = e.target;
     downloadBtn.setAttribute("download", "placeholder");
     downloadBtn.setAttribute('href', image);
   }
@@ -234,14 +235,38 @@ function App() {
                 height={canvasHeight}
               />
             </div>
-            <a 
-              id="download-canvas"
-              type="button" 
-              onClick={convertCanvasToPng} 
-              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            >
-              Download Image
-            </a>
+            <div className="dropdown">
+              <label tabIndex={"0"} className="btn m-1">Download Image <FontAwesomeIcon className="ml-2" icon={faArrowDown} /></label>
+              <ul tabIndex={"0"} className="dropdown-content menu p-2 shadow text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 w-52">
+                <li>
+                  <a
+                    id="png"
+                    type="button" 
+                    onClick={convertCanvasToImage} 
+                  >
+                    Download as a PNG
+                  </a>
+                </li>
+                <li>
+                  <a
+                    id="jpeg"
+                    type="button" 
+                    onClick={convertCanvasToImage}
+                  >
+                    Download as a JPG
+                  </a>
+                </li>
+                <li>
+                  <a
+                    id="webp"
+                    type="button" 
+                    onClick={convertCanvasToImage}
+                  >
+                    Download as a WebP
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </main>
