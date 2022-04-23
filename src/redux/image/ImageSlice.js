@@ -7,41 +7,41 @@ export const ImageSlice = createSlice({
         fontSizes: [
             {
                 id: uid(),
-                fontName: "XXS",
+                sizeName: "XXS",
                 fontSize: "0.5rem"
             },
             {
                 id: uid(),
-                fontName: "XS",
+                sizeName: "XS",
                 fontSize: "0.75rem"
             },
             {
                 id: uid(),
-                fontName: "SM",
+                sizeName: "SM",
                 fontSize: "1rem"
             },
             {
                 id: uid(),
-                fontName: "MD",
+                sizeName: "MD",
                 fontSize: "1.25rem"
             },
             {
                 id: uid(),
-                fontName: "LG",
+                sizeName: "LG",
                 fontSize: "1.5rem"
             },
             {
                 id: uid(),
-                fontName: "XL",
+                sizeName: "XL",
                 fontSize: "1.75rem"
             },  
             {
                 id: uid(),
-                fontName: "XXL",
+                sizeName: "XXL",
                 fontSize: "2rem"
             },        
         ],
-        fontSize: "1rem"
+        canvasFontSize: "1rem",
     },
     reducers: {
         setFontSize: (state, action) => {

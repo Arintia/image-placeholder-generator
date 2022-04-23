@@ -73,7 +73,7 @@ function App() {
         <div className="mb-3 w-1/4 group">
           <label htmlFor="font-size" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Font Size</label>
           {fontSizes.map(font => 
-            <FontSizeButton key={font.id} fontName={font.fontName} fontSize={font.fontSize} />  
+            <FontSizeButton key={font.id} sizeName={font.sizeName} fontSize={font.fontSize} />  
           )}
         </div>
       </div>
