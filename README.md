@@ -41,7 +41,7 @@ This project can be used to generate placeholder images for your own projects wi
 
 ### Roadmap
 - [X] Fix odd behavior of canvas scaling.
-- [ ] Allow different file types.
+- [X] Allow different file types.
 - [ ] Allow image as a caption.
 - [X] Better mobile design.
 
