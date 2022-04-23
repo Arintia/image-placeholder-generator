@@ -190,7 +190,7 @@ function App() {
         </div>
       </main>
       <footer className="absolute bottom-0 right-0 text-gray-500 dark:text-white">
-                <p className="mr-2 mb-2 text-lg">Developed by Yigit Atak <a href="github"><FontAwesomeIcon className="ml-1 text-2xl" icon={faGithub} /></a></p>
+                <p className="mr-2 mb-2 text-lg">Developed by Yigit Atak <a href="https://github.com/Arintia"><FontAwesomeIcon className="ml-1 text-2xl" icon={faGithub} /></a></p>
       </footer>
     </React.Fragment>
   );
