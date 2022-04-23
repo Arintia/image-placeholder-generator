@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import FontSizeButton from './components/FontSizeButton';
 
 function App() {
   const [theme, setTheme] = useState("light");
   const html = useRef();
   const lightModeSun = useRef();
   const darkModeMoon = useRef();
+  const fontSizes = useSelector(state => state.image.fontSizes);
 
   useEffect(() => {
     html.current = document.querySelector("html");
@@ -69,27 +72,9 @@ function App() {
         </div>
         <div className="mb-3 w-1/4 group">
           <label htmlFor="font-size" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Font Size</label>
-            <button type="button" className="w-11 justify-center text-white bg-gray-400 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-              XXS
-            </button>
-            <button type="button" className="w-11 justify-center text-white bg-gray-400 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-              XS
-            </button>
-            <button type="button" className="w-11 justify-center text-white bg-gray-400 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-              S
-            </button>
-            <button type="button" className="w-11 justify-center text-white bg-gray-400 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-              MD
-            </button>
-            <button type="button" className="w-11 justify-center text-white bg-gray-400 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-              LG
-            </button>
-            <button type="button" className="w-11 justify-center text-white bg-gray-400 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-              XL
-            </button>
-            <button type="button" className="w-11 justify-center text-white bg-gray-400 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-800">
-              XXL
-            </button>
+          {fontSizes.map(font => 
+            <FontSizeButton key={font.id} fontName={font.fontName} fontSize={font.fontSize} />  
+          )}
         </div>
       </div>
     </div>

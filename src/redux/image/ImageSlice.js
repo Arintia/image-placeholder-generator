@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {uid} from "uid";
 
-export const MoviesSlice = createSlice({
+export const ImageSlice = createSlice({
     name: "movies",
     initialState: {
         fontSizes: [
@@ -40,11 +40,15 @@ export const MoviesSlice = createSlice({
                 fontName: "XXL",
                 fontSize: "2rem"
             },        
-        ]
+        ],
+        fontSize: "1rem"
     },
     reducers: {
-
+        setFontSize: (state, action) => {
+            state.fontSize = action.payload;
+        }
     },
 });
 
-export default MoviesSlice.reducer;
+export const {setFontSize} = ImageSlice.actions;
+export default ImageSlice.reducer;
