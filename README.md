@@ -40,7 +40,7 @@ You need the following tools for installation:
 This project can be used to generate placeholder images for your own projects with ease.
 
 ### Roadmap
-- [ ] Fix odd behavior of canvas scaling.
+- [X] Fix odd behavior of canvas scaling.
 - [ ] Allow different file types.
 - [ ] Allow image as a caption.
 - [ ] Better mobile design.
