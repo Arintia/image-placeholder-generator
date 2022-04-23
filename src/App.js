@@ -7,15 +7,49 @@ import FontStyleOption from './components/FontStyleOption';
 import { setFontStyle } from './redux/image/ImageSlice';
 
 function App() {
+  // Used to dispatch callbacks to redux store
   const dispatch = useDispatch();
+  /**
+   * Stores/sets current theme
+   * @param {String} theme - Current theme("light" or "dark")
+   */
   const [theme, setTheme] = useState("light");
+  /**
+   * Stores HTML DOM element to set its class to "dark" if dark mode is activated. 
+   */
   const html = useRef();
+  /**
+   * Stores HTML5 Canvas DOM element's 2D context
+   */
   const canvas = useRef();
+  /**
+   * Stores sun SVG for light mode
+   */
   const lightModeSun = useRef();
+  /**
+   * Stores moon SVG for dark mode
+   */
   const darkModeMoon = useRef();
+  /**
+   * Stores fontSizes array fetched from redux store
+   * @param fontSizes.id - Unique ID of the font size
+   * @param fontSizes.fontSize - Font size("1rem", "1.5rem" etc)
+   * @param fontSizes.sizeName - Font size name("SM", "MD" etc)
+   */
   const fontSizes = useSelector(state => state.image.fontSizes);
+  /**
+   * Stores fontStyles array fetched from redux store
+   * @param fontStyles.id - Unique ID of the font style
+   * @param fontStyles.fontName - Name of the font("Sans-serif", "Serif" etc)
+   */
   const fontStyles = useSelector(state => state.image.fontStyles);
+  /**
+   * Stores canvasFontSize fetched from redux store(currently selected font size)
+   */
   const canvasFontSize = useSelector(state => state.image.canvasFontSize);
+  /**
+   * Stores canvasFontStyle fetched from redux store(currently selected font Style)
+   */
   const canvasFontStyle = useSelector(state => state.image.canvasFontStyle);
   const [canvasWidth, setCanvasWidth] = useState(600);
   const [canvasHeight, setCanvasHeight] = useState(600);
@@ -24,6 +58,11 @@ function App() {
   const [canvasTextColor, setCanvasTextColor] = useState("#ffffff");
   const [canvasBackgroundColor, setCanvasBackgroundColor] = useState("#cccccc");
 
+  /**
+   * This useEffect is called upon dom mount. It assigns the necessary DOM elements such as the canvas context, html DOM element,
+   * light and dark mode SVG's. It then checks if the user prefers dark mode or light mode in their system and changes the app's
+   * theme based on their preference. 
+   */
   useEffect(() => {
     html.current = document.querySelector("html");
     lightModeSun.current = document.getElementById("sun");
@@ -41,10 +80,20 @@ function App() {
     
   }, []);
 
+  /**
+   * This useEffect hook is called each time theme state is manipulated. It checks whether or not the theme is equal to "dark" and
+   * assigns the "dark" class to the HTML dom element if it is. This is how Tailwind CSS handles theming.
+   */
   useEffect(() => {
     theme === "dark" ? html.current.classList.add("dark") : html.current.classList.remove("dark")
   }, [theme]);
 
+  /**
+   * Every time canvas states(background color, caption, font size etc) are changed, the HTML5 Canvas is deleted and re-painted.
+   * This is done to make sure the old text doesn't remain on screen. Once the text is written on a canvas, it's no longer a text
+   * and it's simply some pixels on the screen. Therefore, this useEffect hook re-paints the canvas to make sure it's on par with
+   * the end-user's expectations.
+   */
   useEffect(() => {
     canvas.current.clearRect(0, 0, canvasWidth, canvasHeight);
     canvas.current.fillStyle = canvasBackgroundColor;
@@ -54,6 +103,9 @@ function App() {
     canvas.current.fillText(canvasCaption, (canvasWidth / 2) - (canvas.current.measureText(canvasCaption).width /2), canvasHeight / 2);
   }, [canvasBackgroundColor, canvasCaption, canvasFontSize, canvasFontStyle, canvasFontWeight, canvasHeight, canvasTextColor, canvasWidth]);
 
+  /**
+   * Switches the theme based on the current theme.
+   */
   const handleThemeSwitch = () => {
     if(theme === "dark") {
       setTheme("light");
@@ -62,6 +114,10 @@ function App() {
     }
   }
 
+  /**
+   * Converts the HTMl5 Canvas to a downloadable PNG file and starts the download.
+   * @param {*} e - Event object 
+   */
   const convertCanvasToPng = (e) => {
     const canvas = document.getElementById("image-canvas");
     const image = canvas.toDataURL("image/png");

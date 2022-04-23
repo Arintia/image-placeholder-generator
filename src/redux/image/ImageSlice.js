@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import {uid} from "uid";
 
 export const ImageSlice = createSlice({
-    name: "movies",
+    name: "image",
     initialState: {
-        fontSizes: [
+        fontSizes: [ // all available font sizes
             {
                 id: uid(),
                 sizeName: "XXS",
@@ -41,8 +41,8 @@ export const ImageSlice = createSlice({
                 fontSize: "2rem"
             },        
         ],
-        canvasFontSize: "1rem",
-        fontStyles: [
+        canvasFontSize: "1rem", // current canvas font size
+        fontStyles: [ // all available font styles
             {
                 id: uid(),
                 fontName: "Serif",
@@ -64,7 +64,7 @@ export const ImageSlice = createSlice({
                 fontName: "Fantasy",
             }
         ],
-        canvasFontStyle: "Serif"
+        canvasFontStyle: "Serif" // current canvas font style
     },
     reducers: {
         setFontSize: (state, action) => {

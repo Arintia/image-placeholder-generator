@@ -5,13 +5,16 @@ import { setFontSize } from '../redux/image/ImageSlice';
 function FontSizeButton({fontSize, sizeName}) {
     const dispatch = useDispatch();
     const canvasFontSize = useSelector(state => state.image.canvasFontSize);
-    
+    /**
+     * The ternary operator below checks whether the current canvas font size is equal to the button's font size and changes the
+     * styling based on that check.
+     */
     return (
         <button 
             value={fontSize} 
             type="button" 
             className={
-                canvasFontSize === fontSize 
+                canvasFontSize === fontSize
                 ? 
                 "w-11 justify-center text-white bg-blue-700 hover:bg-blue-600 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2"
                 :
