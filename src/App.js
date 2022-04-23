@@ -246,7 +246,7 @@ function App() {
         </div>
       </main>
       <footer className="absolute bottom-0 right-0 text-gray-800 dark:text-white">
-                <p className="mr-2 mb-2 text-sm lg:text-lg">Developed by Yigit Atak <a href="https://github.com/Arintia"><FontAwesomeIcon className="ml-1 text-md lg:text-2xl" icon={faGithub} /></a></p>
+                <p className="mr-2 mb-2 text-sm lg:text-lg">Developed by Yigit Atak <a href="https://github.com/Arintia/image-placeholder-generator"><FontAwesomeIcon className="ml-1 text-md lg:text-2xl" icon={faGithub} /></a></p>
       </footer>
     </React.Fragment>
   );
