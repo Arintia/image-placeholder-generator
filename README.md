@@ -43,7 +43,7 @@ This project can be used to generate placeholder images for your own projects wi
 - [X] Fix odd behavior of canvas scaling.
 - [ ] Allow different file types.
 - [ ] Allow image as a caption.
-- [ ] Better mobile design.
+- [X] Better mobile design.
 
 ### Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
