@@ -226,10 +226,10 @@ function App() {
             </div>
           </div>
           <div className="w-1/2 h-1/2 flex flex-col justify-center items-center mr-12">
-            <div className="w-full h-full mb-4">
+            <div className="w-full h-full mb-4 relative">
               <canvas 
                 id="image-canvas"
-                className="w-full h-full"
+                className="absolute w-full h-full"
                 width={canvasWidth} 
                 height={canvasHeight}
               />
