@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import FontSizeButton from './components/FontSizeButton';
+import FontStyleOption from './components/FontStyleOption';
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -9,6 +10,7 @@ function App() {
   const lightModeSun = useRef();
   const darkModeMoon = useRef();
   const fontSizes = useSelector(state => state.image.fontSizes);
+  const fontStyles = useSelector(state => state.image.fontStyles);
 
   useEffect(() => {
     html.current = document.querySelector("html");
@@ -62,12 +64,9 @@ function App() {
         <div className="mb-3 w-1/4 group">
           <label htmlFor="font" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Font</label>
           <select id="font" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            <option>Please select a font style...</option>
-            <option>Serif</option>
-            <option>Sans-serif</option>
-            <option>Monospace</option>
-            <option>Cursive</option>
-            <option>Fantasy</option>
+            {fontStyles.map(fontStyle => 
+              <FontStyleOption key={fontStyle.id} fontName={fontStyle.fontName} />  
+            )}
           </select>
         </div>
         <div className="mb-3 w-1/4 group">

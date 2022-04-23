@@ -42,13 +42,39 @@ export const ImageSlice = createSlice({
             },        
         ],
         canvasFontSize: "1rem",
+        fontStyles: [
+            {
+                id: uid(),
+                fontName: "Serif",
+            },
+            {
+                id: uid(),
+                fontName: "Sans-serif",
+            },
+            {
+                id: uid(),
+                fontName: "Monospace",
+            },
+            {
+                id: uid(),
+                fontName: "Cursive",
+            },
+            {
+                id: uid(),
+                fontName: "Fantasy",
+            }
+        ],
+        canvasFontStyle: "Serif"
     },
     reducers: {
         setFontSize: (state, action) => {
             state.fontSize = action.payload;
+        },
+        setFontStyle: (state, action) => {
+            state.canvasFontStyle = action.payload;
         }
     },
 });
 
-export const {setFontSize} = ImageSlice.actions;
+export const { setFontSize, setFontStyle } = ImageSlice.actions;
 export default ImageSlice.reducer;
